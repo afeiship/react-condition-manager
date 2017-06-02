@@ -25,6 +25,7 @@ export default class extends PureComponent{
   }
 
   render(){
-    return <section {...this.props} children={this.children} />
+    const {className,conditionList,...props} = this.props;
+    return <section {...props} className={classNames('react-condition-manager',className)} children={this.children} />;
   }
 }
