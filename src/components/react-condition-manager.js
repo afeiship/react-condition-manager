@@ -1,5 +1,3 @@
-import './style.scss';
-
 import React,{PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
@@ -22,9 +20,7 @@ export default class extends PureComponent{
   get children(){
     const {conditionList,children} = this.props;
     return conditionList.map((item,index)=>{
-      if(item===true){
-        return children[index];
-      }
+      return item ? children[index] : null;
     });
   }
 
