@@ -1,31 +1,31 @@
-import React,{PureComponent} from 'react';
+import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import noop from 'noop';
 import objectAssign from 'object-assign';
 
-export default class extends PureComponent{
+export default class extends Component {
   /*===properties start===*/
   static propTypes = {
-    className:PropTypes.string,
-    conditionList:PropTypes.array,
+    className: PropTypes.string,
+    items: PropTypes.array,
   };
 
   static defaultProps = {
-    conditionList:[]
+    items: []
   };
   /*===properties end===*/
 
-  get children(){
-    const {conditionList,children} = this.props;
-    return conditionList.map((item,index)=>{
-      return item ? children[index] : null;
+  get children() {
+    const { items, children } = this.props;
+    return items.map((item, index) => {
+      return item ? ( children[index] || children ) : null;
     });
   }
 
-  render(){
-    const {className,conditionList,...props} = this.props;
-    return <section {...props} className={classNames('react-condition-manager',className)} children={this.children} />;
+  render() {
+    const { className, items, ...props } = this.props;
+    return <section {...props} className={classNames('react-condition-manager', className)} children={this.children} />;
   }
 }
