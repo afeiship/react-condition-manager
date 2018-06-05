@@ -30,7 +30,7 @@ class App extends React.Component{
     const {index,status} = this.state;
     return (
       <div className="hello-react-condition-manager">
-        <ReactConditionManager conditionList={[true,false,true]}>
+        <ReactConditionManager items={[true,false,true]}>
           <div>when condition 1</div>
           <div>when condition 2</div>
           <div>when condition 3</div>
@@ -42,7 +42,7 @@ class App extends React.Component{
         <button onClick={this._click.bind(this,'F0')}>Set Status - F-0</button>
         <button onClick={this._click.bind(this,'F1')}>Set Status - F-1</button>
 
-         <ReactConditionManager conditionList={[
+         <ReactConditionManager items={[
            index === 0 && status === 'N',
            index === 0 && status === 'A',
            index === 0 && status === 'F0',
