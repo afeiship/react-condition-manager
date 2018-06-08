@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createElement } from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -10,22 +10,27 @@ export default class extends Component {
   static propTypes = {
     className: PropTypes.string,
     items: PropTypes.array,
+    nodeName: PropTypes.any,
   };
 
   static defaultProps = {
-    items: []
+    items: [],
+    nodeName: 'div'
   };
   /*===properties end===*/
 
   get children() {
     const { items, children } = this.props;
     return items.map((item, index) => {
-      return item ? ( children[index] || children ) : null;
+      return item ? (children[index] || children) : null;
     });
   }
 
   render() {
     const { className, items, ...props } = this.props;
-    return <section {...props} className={classNames('react-condition-manager', className)} children={this.children} />;
+    return createElement( nodeName, {
+      children: this.children,
+      ...props,
+    });
   }
 }
