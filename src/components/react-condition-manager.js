@@ -8,7 +8,6 @@ import objectAssign from 'object-assign';
 export default class extends Component {
   /*===properties start===*/
   static propTypes = {
-    className: PropTypes.string,
     items: PropTypes.array,
     nodeName: PropTypes.any,
   };
@@ -27,7 +26,7 @@ export default class extends Component {
   }
 
   render() {
-    const { className, nodeName, items, ...props } = this.props;
+    const { nodeName, items, ...props } = this.props;
     return createElement(nodeName, {
       children: this.children,
       ...props,
