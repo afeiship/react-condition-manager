@@ -6,12 +6,13 @@
 ```javascript
 
   static propTypes = {
-    className: PropTypes.string,
     items: PropTypes.array,
+    nodeName: PropTypes.any,
   };
 
   static defaultProps = {
-    items: []
+    items: [],
+    nodeName: 'div'
   };
   
 ```
