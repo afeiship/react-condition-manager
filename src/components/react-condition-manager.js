@@ -27,8 +27,8 @@ export default class extends Component {
   }
 
   render() {
-    const { className, items, ...props } = this.props;
-    return createElement( nodeName, {
+    const { className, nodeName, items, ...props } = this.props;
+    return createElement(nodeName, {
       children: this.children,
       ...props,
     });
