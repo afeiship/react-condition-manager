@@ -14,7 +14,7 @@ export default class extends Component {
 
   static defaultProps = {
     items: [],
-    nodeName: 'div'
+    nodeName: React.Fragment || 'div'
   };
   /*===properties end===*/
 
