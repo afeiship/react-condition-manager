@@ -1,14 +1,9 @@
 {
   "name": "react-condition-manager",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React condition manager.",
   "author": "afeiship <1290657123@qq.com>",
-  "keywords": [
-    "components",
-    "react-condition-manager",
-    "ui",
-    "theme"
-  ],
+  "keywords": ["components", "react-condition-manager", "ui", "theme"],
   "private": false,
   "repository": {
     "type": "git",
