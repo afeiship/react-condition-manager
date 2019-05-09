@@ -1,8 +1,8 @@
-import './dev.scss';
+import ReactConditionManager from '../src/main';
+import ReactDOM from 'react-dom';
+import React from 'react';
+import './assets/style.scss';
 
-import ReactConditionManager from './main';
-
-/*===example start===*/
 class App extends React.Component {
   state = {
     index: 0,
@@ -29,18 +29,18 @@ class App extends React.Component {
   render() {
     const { index, status } = this.state;
     return (
-      <div className="hello-react-condition-manager">
+      <div className="app-container">
         <ReactConditionManager items={[true, false, true]}>
           <div>when condition 1</div>
           <div>when condition 2</div>
           <div>when condition 3</div>
         </ReactConditionManager>
 
-        <button onClick={this._click.bind(this, 'N')}>Set Status - N</button>
-        <button onClick={this._click.bind(this, 'A')}>Set Status - A</button>
-        <button onClick={this._click.bind(this, 'F0')}>Set Status - F-0</button>
-        <button onClick={this._click.bind(this, 'F1')}>Set Status - F-1</button>
-        <button onClick={this._click.bind(this, null)}>Set DEFULA</button>
+        <button className="button" onClick={this._click.bind(this, 'N')}>Set Status - N</button>
+        <button className="button" onClick={this._click.bind(this, 'A')}>Set Status - A</button>
+        <button className="button" onClick={this._click.bind(this, 'F0')}>Set Status - F-0</button>
+        <button className="button" onClick={this._click.bind(this, 'F1')}>Set Status - F-1</button>
+        <button className="button" onClick={this._click.bind(this, null)}>Set DEFULA</button>
 
         <ReactConditionManager
           items={[
@@ -60,6 +60,5 @@ class App extends React.Component {
     );
   }
 }
-/*===example end===*/
 
 ReactDOM.render(<App />, document.getElementById('app'));
