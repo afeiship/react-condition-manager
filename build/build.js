@@ -24,9 +24,18 @@ export default merge(baseConfig, {
       amd: 'react-dom',
       umd: 'react-dom'
     },
-    classnames: 'classnames',
-    noop: 'noop',
-    'prop-types': 'PropTypes'
+    classnames: {
+      commonjs: 'classnames',
+      commonjs2: 'classnames',
+      amd: 'classnames',
+      root: 'classNames'
+    },
+    'prop-types': {
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+      amd: 'prop-types',
+      root: 'PropTypes'
+    }
   },
   plugins: [
     new CopyWebpackPlugin([
