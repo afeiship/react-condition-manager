@@ -10,10 +10,10 @@ export default merge(baseConfig, {
     filename: 'index.js'
   },
   externals: {
-    react: 'react',
+    react: 'React',
     classnames: 'classnames',
     noop: 'noop',
-    'react-dom': 'react-dom',
+    'react-dom': 'ReactDOM',
     'object-assign': 'object-assign',
     'prop-types': 'prop-types'
   },
