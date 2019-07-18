@@ -1,5 +1,9 @@
-import { Component, createElement } from 'react';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import noop from 'noop';
+import objectAssign from 'object-assign';
 
 export default class extends Component {
   /*===properties start===*/
@@ -34,7 +38,7 @@ export default class extends Component {
   render() {
     const { nodeName, items, children, virtual, ...props } = this.props;
     const _nodeName = virtual ? React.Fragment : nodeName;
-    return createElement(_nodeName, {
+    return React.createElement(_nodeName, {
       children: this.children,
       ...props
     });

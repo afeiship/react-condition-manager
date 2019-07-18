@@ -1,2 +1,2 @@
-import ReactConditionManager from 'components/react-condition-manager';
+import ReactConditionManager from './components';
 export default ReactConditionManager;
