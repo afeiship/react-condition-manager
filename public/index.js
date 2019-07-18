@@ -53,6 +53,7 @@ class App extends React.Component {
         </button>
 
         <ReactConditionManager
+          virtual
           items={[
             index === 0 && status === 'N',
             index === 0 && status === 'A',
