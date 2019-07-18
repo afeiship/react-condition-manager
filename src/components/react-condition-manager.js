@@ -5,12 +5,14 @@ export default class extends Component {
   /*===properties start===*/
   static propTypes = {
     items: PropTypes.array,
-    nodeName: PropTypes.any
+    nodeName: PropTypes.any,
+    virtual: PropTypes.bool
   };
 
   static defaultProps = {
     items: [],
-    nodeName: 'div'
+    nodeName: 'div',
+    virtual: false
   };
   /*===properties end===*/
 
@@ -30,8 +32,9 @@ export default class extends Component {
   }
 
   render() {
-    const { nodeName, items, children, ...props } = this.props;
-    return createElement(nodeName, {
+    const { nodeName, items, children, virtual, ...props } = this.props;
+    const _nodeName = virtual ? React.Fragment : nodeName;
+    return createElement(_nodeName, {
       children: this.children,
       ...props
     });
