@@ -1,6 +1,6 @@
 {
-  "name": "react-condition-manager",
-  "version": "1.0.0",
+  "name": "@feizheng/react-condition-manager",
+  "version": "1.1.0",
   "description": "React condition manager.",
   "main": "dist/index.js",
   "scripts": {
@@ -47,6 +47,7 @@
     "babel-loader": "^8.0.5",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
+    "node-sass": "^4.12.0",
     "jest": "^24.5.0",
     "prettier": "^1.16.4",
     "rake-git": "github:afeiship/rake-git",
@@ -58,11 +59,13 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "@feizheng/noop": "^1.0.0",
     "classnames": "^2.2.6",
-    "node-sass": "^4.12.0",
-    "noop": "github:afeiship/noop",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

@@ -1,4 +1,4 @@
-import ReactConditionManager from '../src/main';
+import RCM from '../src/main';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import './assets/style.scss';
@@ -30,11 +30,11 @@ class App extends React.Component {
     const { index, status } = this.state;
     return (
       <div className="app-container">
-        <ReactConditionManager items={[true, false, true]}>
+        <RCM items={[true, false, true]}>
           <div>when condition 1</div>
           <div>when condition 2</div>
           <div>when condition 3</div>
-        </ReactConditionManager>
+        </RCM>
 
         <button className="button" onClick={this._click.bind(this, 'N')}>
           Set Status - N
@@ -52,7 +52,7 @@ class App extends React.Component {
           Set DEFULA
         </button>
 
-        <ReactConditionManager
+        <RCM
           virtual
           items={[
             index === 0 && status === 'N',
@@ -66,7 +66,7 @@ class App extends React.Component {
           <div>when condition 3 ---. F (index = 0)</div>
           <div>when condition 4 ---. F (index = 1)</div>
           <div>default. null view..</div>
-        </ReactConditionManager>
+        </RCM>
       </div>
     );
   }

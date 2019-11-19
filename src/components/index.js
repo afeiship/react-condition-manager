@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import noop from 'noop';
+import noop from '@feizheng/noop';
 import objectAssign from 'object-assign';
 
 export default class extends Component {
+  static displayName = 'RCM';
   /*===properties start===*/
   static propTypes = {
     items: PropTypes.array,
