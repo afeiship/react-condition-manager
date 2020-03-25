@@ -9,7 +9,7 @@ class App extends React.Component {
     status: 'N'
   };
 
-  _click(status) {
+  handleClick(status) {
     console.log(status);
     if (status === 'F0') {
       this.setState({
@@ -36,19 +36,19 @@ class App extends React.Component {
           <div>when condition 3</div>
         </RCM>
 
-        <button className="button" onClick={this._click.bind(this, 'N')}>
+        <button className="button" onClick={this.handleClick.bind(this, 'N')}>
           Set Status - N
         </button>
-        <button className="button" onClick={this._click.bind(this, 'A')}>
+        <button className="button" onClick={this.handleClick.bind(this, 'A')}>
           Set Status - A
         </button>
-        <button className="button" onClick={this._click.bind(this, 'F0')}>
+        <button className="button" onClick={this.handleClick.bind(this, 'F0')}>
           Set Status - F-0
         </button>
-        <button className="button" onClick={this._click.bind(this, 'F1')}>
+        <button className="button" onClick={this.handleClick.bind(this, 'F1')}>
           Set Status - F-1
         </button>
-        <button className="button" onClick={this._click.bind(this, null)}>
+        <button className="button" onClick={this.handleClick.bind(this, null)}>
           Set DEFULA
         </button>
 

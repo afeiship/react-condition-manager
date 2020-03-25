@@ -1,22 +1,35 @@
 # react-condition-manager
 > React condition manager.
 
-## install
+## installation
 ```shell
-npm install -S afeiship/react-condition-manager
+npm install -S @feizheng/react-condition-manager
 ```
+
+## update
+```shell
+npm update @feizheng/react-condition-manager
+```
+
+## properties
+| Name     | Type  | Default | Description             |
+| -------- | ----- | ------- | ----------------------- |
+| items    | array | []      | You condition list.     |
+| nodeName | any   | 'div'   | The container tag name. |
+| virtual  | bool  | false   | If use react.framgment. |
+
 
 ## usage
 1. import css
   ```scss
-  @import "~react-condition-manager/style.scss";
+  @import "~@feizheng/react-condition-manager/dist/style.scss";
 
   // customize your styles:
   $react-condition-manager-options: ()
   ```
 2. import js
   ```js
-  import RCM from '../src/main';
+  import RCM from '@feizheng/react-condition-manager';
   import ReactDOM from 'react-dom';
   import React from 'react';
   import './assets/style.scss';
@@ -27,7 +40,7 @@ npm install -S afeiship/react-condition-manager
       status: 'N'
     };
 
-    _click(status) {
+    handleClick(status) {
       console.log(status);
       if (status === 'F0') {
         this.setState({
@@ -54,19 +67,19 @@ npm install -S afeiship/react-condition-manager
             <div>when condition 3</div>
           </RCM>
 
-          <button className="button" onClick={this._click.bind(this, 'N')}>
+          <button className="button" onClick={this.handleClick.bind(this, 'N')}>
             Set Status - N
           </button>
-          <button className="button" onClick={this._click.bind(this, 'A')}>
+          <button className="button" onClick={this.handleClick.bind(this, 'A')}>
             Set Status - A
           </button>
-          <button className="button" onClick={this._click.bind(this, 'F0')}>
+          <button className="button" onClick={this.handleClick.bind(this, 'F0')}>
             Set Status - F-0
           </button>
-          <button className="button" onClick={this._click.bind(this, 'F1')}>
+          <button className="button" onClick={this.handleClick.bind(this, 'F1')}>
             Set Status - F-1
           </button>
-          <button className="button" onClick={this._click.bind(this, null)}>
+          <button className="button" onClick={this.handleClick.bind(this, null)}>
             Set DEFULA
           </button>
 
@@ -91,6 +104,7 @@ npm install -S afeiship/react-condition-manager
   }
 
   ReactDOM.render(<App />, document.getElementById('app'));
+
   ```
 
 ## documentation

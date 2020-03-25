@@ -1,4 +1,4 @@
-import baseConfig from '.';
+import baseConfig from './base';
 import merge from 'webpack-merge';
 import {
   configs,
@@ -7,13 +7,16 @@ import {
   loaders,
   plugins,
   externals
-} from 'webpack-lib-kits';
+} from '@feizheng/webpack-lib-kits';
 
 export default merge(baseConfig, {
   entry: inputs.build(),
   output: outputs.build({
     library: 'ReactConditionManager'
   }),
-  externals: externals.base(),
+  externals: externals.base({
+    '@feizheng/noop': '@feizheng/noop',
+    antd: 'antd'
+  }),
   plugins: [plugins.clean(), plugins.copyStyles()]
 });

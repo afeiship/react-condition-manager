@@ -5,12 +5,23 @@ import classNames from 'classnames';
 import noop from '@feizheng/noop';
 import objectAssign from 'object-assign';
 
-export default class extends Component {
-  static displayName = 'RCM';
-  /*===properties start===*/
+const CLASS_NAME = 'react-condition-manager';
+
+export default class ReactConditionManager extends Component {
+  static displayName = CLASS_NAME;
+  static version = '__VERSION__';
   static propTypes = {
+    /**
+     * You condition list.
+     */
     items: PropTypes.array,
+    /**
+     * The container tag name.
+     */
     nodeName: PropTypes.any,
+    /**
+     * If use react.framgment.
+     */
     virtual: PropTypes.bool
   };
 
@@ -19,7 +30,6 @@ export default class extends Component {
     nodeName: 'div',
     virtual: false
   };
-  /*===properties end===*/
 
   get children() {
     const { items, children } = this.props;
