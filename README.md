@@ -12,11 +12,11 @@ npm install -S @jswork/react-condition-manager
 ```
 
 ## properties
-| Name      | Type   | Required | Default | Description                           |
-| --------- | ------ | -------- | ------- | ------------------------------------- |
-| className | string | false    | -       | The extended className for component. |
-| value     | object | false    | null    | The changed value.                    |
-| onChange  | func   | false    | noop    | The change handler.                   |
+| Name     | Type  | Required | Default | Description             |
+| -------- | ----- | -------- | ------- | ----------------------- |
+| items    | array | false    | []      | You condition list.     |
+| nodeName | any   | false    | 'div'   | The container tag name. |
+| virtual  | bool  | false    | false   | If use react.framgment. |
 
 
 ## usage
@@ -35,17 +35,85 @@ npm install -S @jswork/react-condition-manager
   import ReactDemokit from '@jswork/react-demokit';
   import React from 'react';
   import ReactDOM from 'react-dom';
-  import ReactConditionManager from '@jswork/react-condition-manager';
+  import RCM from '@jswork/react-condition-manager';
   import './assets/style.scss';
 
   class App extends React.Component {
+    state = {
+      index: 0,
+      status: 'N'
+    };
+
+    handleClick(status) {
+      console.log(status);
+      if (status === 'F0') {
+        this.setState({
+          index: 0,
+          status: 'F0'
+        });
+      } else if (status === 'F1') {
+        this.setState({
+          index: 1,
+          status: 'F1'
+        });
+      } else {
+        this.setState({ status });
+      }
+    }
+
     render() {
+      const { index, status } = this.state;
       return (
         <ReactDemokit
           className="p-3 app-container"
           url="https://github.com/afeiship/react-condition-manager">
-          <ReactConditionManager className="mb-5 has-text-white" />
-          <button className="button is-primary is-fullwidth">Start~</button>
+          <RCM items={[true, false, true]}>
+            <div>when condition 1</div>
+            <div>when condition 2</div>
+            <div>when condition 3</div>
+          </RCM>
+
+          <button
+            className="button mr-1 is-primary"
+            onClick={this.handleClick.bind(this, 'N')}>
+            Set Status - N
+          </button>
+          <button
+            className="button mr-1 is-primary"
+            onClick={this.handleClick.bind(this, 'A')}>
+            Set Status - A
+          </button>
+          <button
+            className="button mr-1 is-primary"
+            onClick={this.handleClick.bind(this, 'F0')}>
+            Set Status - F-0
+          </button>
+          <button
+            className="button mr-1 is-primary"
+            onClick={this.handleClick.bind(this, 'F1')}>
+            Set Status - F-1
+          </button>
+          <button
+            className="button is-primary"
+            onClick={this.handleClick.bind(this, null)}>
+            Set DEFULA
+          </button>
+
+          <RCM
+            virtual
+            items={[
+              index === 0 && status === 'N',
+              index === 0 && status === 'A',
+              index === 0 && status === 'F0',
+              index === 1 && status === 'F1',
+              null
+            ]}>
+            <div>when condition 1 ---. N</div>
+            <div>when condition 2 ---. A</div>
+            <div>when condition 3 ---. F (index = 0)</div>
+            <div>when condition 4 ---. F (index = 1)</div>
+            <div>default. null view..</div>
+          </RCM>
         </ReactDemokit>
       );
     }
