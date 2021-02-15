@@ -1,6 +1,7 @@
-import RCM from '../src/main';
-import ReactDOM from 'react-dom';
+import ReactDemokit from '@jswork/react-demokit';
 import React from 'react';
+import ReactDOM from 'react-dom';
+import RCM from '../src/main';
 import './assets/style.scss';
 
 class App extends React.Component {
@@ -29,26 +30,38 @@ class App extends React.Component {
   render() {
     const { index, status } = this.state;
     return (
-      <div className="app-container">
+      <ReactDemokit
+        className="p-3 app-container"
+        url="https://github.com/afeiship/react-condition-manager">
         <RCM items={[true, false, true]}>
           <div>when condition 1</div>
           <div>when condition 2</div>
           <div>when condition 3</div>
         </RCM>
 
-        <button className="button" onClick={this.handleClick.bind(this, 'N')}>
+        <button
+          className="button mr-1 is-primary"
+          onClick={this.handleClick.bind(this, 'N')}>
           Set Status - N
         </button>
-        <button className="button" onClick={this.handleClick.bind(this, 'A')}>
+        <button
+          className="button mr-1 is-primary"
+          onClick={this.handleClick.bind(this, 'A')}>
           Set Status - A
         </button>
-        <button className="button" onClick={this.handleClick.bind(this, 'F0')}>
+        <button
+          className="button mr-1 is-primary"
+          onClick={this.handleClick.bind(this, 'F0')}>
           Set Status - F-0
         </button>
-        <button className="button" onClick={this.handleClick.bind(this, 'F1')}>
+        <button
+          className="button mr-1 is-primary"
+          onClick={this.handleClick.bind(this, 'F1')}>
           Set Status - F-1
         </button>
-        <button className="button" onClick={this.handleClick.bind(this, null)}>
+        <button
+          className="button is-primary"
+          onClick={this.handleClick.bind(this, null)}>
           Set DEFULA
         </button>
 
@@ -67,7 +80,7 @@ class App extends React.Component {
           <div>when condition 4 ---. F (index = 1)</div>
           <div>default. null view..</div>
         </RCM>
-      </div>
+      </ReactDemokit>
     );
   }
 }
