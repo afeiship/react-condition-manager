@@ -18,18 +18,30 @@ export default class ReactConditionManager extends Component {
     /**
      * If use react.framgment.
      */
-    virtual: PropTypes.bool
+    virtual: PropTypes.bool,
+    /**
+     * Return the only view when condition is truthy.
+     */
+    only: PropTypes.bool
   };
 
   static defaultProps = {
     items: [],
+    only: false,
     nodeName: 'div',
     virtual: false
   };
 
-  get children() {
+  get onlyView() {
+    const { items, children } = this.props;
+    const idx = items.findIndex(Boolean);
+    return children[idx] || null;
+  }
+
+  get switchView() {
     const { items, children } = this.props;
     const allFalsy = !items.some((item) => item);
+
     return items.map((item, index) => {
       if (item) {
         return children[index] || children;
@@ -42,8 +54,13 @@ export default class ReactConditionManager extends Component {
     });
   }
 
+  get children() {
+    const { only } = this.props;
+    return only ? this.onlyView : this.switchView;
+  }
+
   render() {
-    const { nodeName, items, children, virtual, ...props } = this.props;
+    const { nodeName, items, children, virtual, only, ...props } = this.props;
     const _nodeName = virtual ? React.Fragment : nodeName;
     return React.createElement(_nodeName, {
       children: this.children,

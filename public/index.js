@@ -6,12 +6,13 @@ import './assets/style.scss';
 
 class App extends React.Component {
   state = {
+    a: null,
+    dynamic: 1,
     index: 0,
     status: 'N'
   };
 
   handleClick(status) {
-    console.log(status);
     if (status === 'F0') {
       this.setState({
         index: 0,
@@ -28,11 +29,36 @@ class App extends React.Component {
   }
 
   render() {
-    const { index, status } = this.state;
+    const { index, dynamic, status } = this.state;
     return (
       <ReactDemokit
         className="p-3 app-container"
         url="https://github.com/afeiship/react-condition-manager">
+        <RCM
+          only
+          items={[
+            dynamic === 1,
+            dynamic === 2,
+            dynamic === 3,
+            dynamic === 4,
+            dynamic === 5
+          ]}>
+          <div>1111</div>
+          <div>2222</div>
+          <div>3333</div>
+          <div>4444</div>
+        </RCM>
+
+        <button
+          className="button mb-1 is-primary"
+          onClick={(e) => {
+            const val = Math.floor(Math.random() * 5);
+            console.log('dynamic only value:', val);
+            this.setState({ dynamic: val });
+          }}>
+          SetDynamic
+        </button>
+
         <RCM items={[true, false, true]}>
           <div>when condition 1</div>
           <div>when condition 2</div>
