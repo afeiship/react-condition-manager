@@ -1,6 +1,6 @@
 {
   "name": "@jswork/react-condition-manager",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React condition manager.",
   "main": "dist/index.js",
   "scripts": {
@@ -21,7 +21,15 @@
   },
   "keywords": [
     "react",
-    "condition"
+    "condition",
+    "manager",
+    "rcm",
+    "switch",
+    "case",
+    "break",
+    "if",
+    "else",
+    "elseif"
   ],
   "author": "afei",
   "license": "MIT",
