@@ -92,7 +92,6 @@ class App extends React.Component {
         </button>
 
         <RCM
-          virtual
           items={[
             index === 0 && status === 'N',
             index === 0 && status === 'A',

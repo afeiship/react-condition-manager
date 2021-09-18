@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 
 const CLASS_NAME = 'react-condition-manager';
@@ -16,10 +16,6 @@ export default class ReactConditionManager extends Component {
      */
     nodeName: PropTypes.any,
     /**
-     * If use react.framgment.
-     */
-    virtual: PropTypes.bool,
-    /**
      * Return the only view when condition is truthy.
      */
     only: PropTypes.bool
@@ -28,7 +24,7 @@ export default class ReactConditionManager extends Component {
   static defaultProps = {
     items: [],
     only: false,
-    nodeName: 'div',
+    nodeName: Fragment,
     virtual: false
   };
 
@@ -61,10 +57,6 @@ export default class ReactConditionManager extends Component {
 
   render() {
     const { nodeName, items, children, virtual, only, ...props } = this.props;
-    const _nodeName = virtual ? React.Fragment : nodeName;
-    return React.createElement(_nodeName, {
-      children: this.children,
-      ...props
-    });
+    return React.createElement(nodeName, { children: this.children, ...props });
   }
 }
