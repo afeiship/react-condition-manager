@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 
 export interface ReactConditionManagerProps {
   as?: any;
+  asProps?: any;
   items: any[];
   only?: boolean;
   children?: any;
@@ -41,8 +42,8 @@ export default class ReactConditionManager extends Component<ReactConditionManag
   }
 
   render() {
-    const { as, items, children, only, ...props } = this.props;
+    const { as, items, children, only, asProps, ...props } = this.props;
     const AsComponent = as || Fragment;
-    return React.createElement(AsComponent!, { children: this.children, ...props });
+    return React.createElement(AsComponent!, { children: this.children, ...asProps, ...props });
   }
 }
