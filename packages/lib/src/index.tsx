@@ -16,6 +16,7 @@ export default class ReactConditionManager extends Component<ReactConditionManag
 
   get onlyView() {
     const { items, children } = this.props;
+    console.log('children: ', children);
     const idx = items.findIndex(Boolean);
     return children![idx] || null;
   }
