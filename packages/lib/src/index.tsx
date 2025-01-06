@@ -1,50 +1,59 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 
 export interface ReactConditionManagerProps {
   as?: any;
   asProps?: any;
   items: any[];
   only?: boolean;
-  children?: any;
+  children?: ReactNode[];
 }
 
-export default class ReactConditionManager extends Component<ReactConditionManagerProps> {
-  static defaultProps = {
-    items: [],
-    only: false,
-  };
+const defaults: ReactConditionManagerProps = {
+  as: Fragment,
+  asProps: {},
+  items: [],
+  only: false,
+  children: [],
+};
 
-  get onlyView() {
-    const { items, children } = this.props;
-    console.log('children: ', children);
+const ReactConditionManager: React.FC<Partial<ReactConditionManagerProps>> = (props) => {
+  // 合并默认参数和传入参数
+  const {
+    as: AsComponent,
+    asProps,
+    items,
+    only,
+    children,
+    ...restProps
+  } = { ...defaults, ...props };
+
+  // 仅显示第一个匹配项
+  const onlyView = () => {
     const idx = items.findIndex(Boolean);
     return children![idx] || null;
-  }
+  };
 
-  get switchView() {
-    const { items, children } = this.props;
+  // 根据条件显示多个项
+  const switchView = () => {
     const allFalsy = !items.some((item) => item);
 
     return items.map((item, index) => {
       if (item) {
-        return children[index] || children;
+        return children![index] || children;
       } else {
-        if (item === null && allFalsy && children[index]) {
-          return children[index];
+        if (item === null && allFalsy && children![index]) {
+          return children![index];
         }
       }
       return null;
     });
-  }
+  };
 
-  get children() {
-    const { only } = this.props;
-    return only ? this.onlyView : this.switchView;
-  }
+  // 根据 only 参数确定显示内容
+  const renderChildren = only ? onlyView() : switchView();
 
-  render() {
-    const { as, items, children, only, asProps, ...props } = this.props;
-    const AsComponent = as || Fragment;
-    return React.createElement(AsComponent!, { children: this.children, ...asProps, ...props });
-  }
-}
+  // 创建并返回组件
+  return React.createElement(AsComponent, { children: renderChildren, ...asProps, ...restProps });
+};
+
+export default ReactConditionManager;
