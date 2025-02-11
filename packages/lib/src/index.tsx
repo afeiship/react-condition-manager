@@ -5,7 +5,7 @@ export interface ReactConditionManagerProps {
   asProps?: any;
   items: any[];
   only?: boolean;
-  children?: ReactNode[];
+  children?: ReactNode[] | ReactNode;
 }
 
 const defaults: ReactConditionManagerProps = {
@@ -15,6 +15,8 @@ const defaults: ReactConditionManagerProps = {
   only: false,
   children: [],
 };
+
+// @reference: https://github.com/copilot/c/3f8cda30-1216-43f9-bd4a-78ab00caf4c1
 
 const ReactConditionManager: React.FC<Partial<ReactConditionManagerProps>> = (props) => {
   // 合并默认参数和传入参数
